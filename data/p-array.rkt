@@ -22,9 +22,10 @@
          (let ((f (extendable-arr-f t^))
                (v (extendable-arr-v t^)))
            (let ((size (vector-length v)))
-             (let ((new-v (vector-append v (build-vector size (f size)))))
-               (set-box! t (make-extendable-arr f new-v))
-               t))))
+             (let ((new-f (λ (i) (f (+ i size)))))
+               (let ((new-v (vector-append v (build-vector size new-f))))
+                 (set-box! t (make-extendable-arr f new-v))
+                 t)))))
         (else
          (extend (Diff-t t^))
          t)))))
@@ -34,7 +35,7 @@
 
 (define create
   (lambda (size f)
-    (box (make-extendable-arr f (build-vector size (f 0))))))
+    (box (make-extendable-arr f (build-vector size f)))))
 
 (define reroot
   (lambda (t)
