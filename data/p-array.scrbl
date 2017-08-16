@@ -1,6 +1,9 @@
 #lang scribble/manual
 
-@(require scribble/example)
+@(require (for-label data/p-array
+                     racket/base
+                     racket/contract/base)
+          scribble/example)
 
 @(define (make-parr-eval)
    (make-base-eval #:lang 'racket/base
