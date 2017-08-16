@@ -3,7 +3,8 @@
 (provide (rename-out [get p-array-ref]
                      [set p-array-set]
                      [create make-p-array]
-                     [extend p-array-resize]))
+                     [extend p-array-resize]
+                     [extendable-arr? p-array?]))
 
 ;; Jason Hemann and Dan Friedman
 
