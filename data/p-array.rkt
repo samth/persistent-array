@@ -69,7 +69,7 @@
 (define set
   (lambda (t i v)
     (cond
-      ((= i v) t)
+      ((equal? (get t i) v) t)
       (else
        (reroot t)
        (let ((t^ (unbox t)))
